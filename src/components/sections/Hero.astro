@@ -1,3 +1,54 @@
-<div class="h-96 flex justify-center items-center">
-  This is the hero content
-</div>
+---
+import ChevronDownIcon from '@/components/icons/ChevronDownIcon.astro';
+import IconContainer from '@/components/ui/IconContainer.astro';
+import GithubIcon from '@/components/icons/GithubIcon.astro';
+import InstagramIcon from '@/components/icons/InstagramIcon.astro';
+import YoutubeIcon from '@/components/icons/YoutubeIcon.astro';
+import TikTokIcon from '@/components/icons/TikTokIcon.astro';
+---
+
+<section id="inicio" class="flex items-stretch relative">
+  <div class="overflow-x-hidden w-full">
+    <div
+      class="bg-center bg-no-repeat bg-cover h-screen bg-[url('/img/hero1.webp')]"
+    >
+    </div>
+  </div>
+  <div class="ml-[-100%] w-full bg-[#1a1a1a90]"></div>
+
+  <div class="ml-[-100%] w-full h-dvh flex justify-center items-center">
+    <div class="max-w-7xl px-4 py-3 mx-auto">
+      <div
+        class="flex flex-col gap-8 text-black/70 text-center text-5xl max-w-lg pt-36"
+      >
+        <p class="font-indie-flower">Dot Dager</p>
+        <p class="font-indie-flower">
+          Fullstack senior y contador serial de chistes de mierda
+        </p>
+
+        <div class="flex gap-2">
+          <IconContainer href="https://github.com/MarianoVilla">
+            <GithubIcon class="w-6 h-6" />
+          </IconContainer>
+          <IconContainer href="https://www.instagram.com/dager.32/">
+            <InstagramIcon class="w-6 h-6" />
+          </IconContainer>
+          <IconContainer href="https://www.youtube.com/@DotDager">
+            <YoutubeIcon class="w-6 h-6" />
+          </IconContainer>
+          <IconContainer href="https://www.tiktok.com/@elantrodedager">
+            <TikTokIcon class="w-6 h-6" />
+          </IconContainer>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0">
+      <a
+        href="#acerca"
+        class="p-2 block text-white/30 hover:text-white/60 transition"
+      >
+        <ChevronDownIcon class="w-12 h-12" />
+      </a>
+    </div>
+  </div>
+</section>

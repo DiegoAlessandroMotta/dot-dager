@@ -1,10 +1,23 @@
-<header class="px-4 py-3 w-dvw flex justify-center items-center gap-8 fixed ">
-  <div>
-    <p class="text-2xl font-semibold">Dot Dager</p>
+<header
+  class="w-dvw flex justify-center items-center gap-8 fixed backdrop-blur-md top-0 z-30 h-16"
+>
+  <div class="max-w-7xl px-4 py-3 mx-auto">
+    <nav>
+      <ul
+        class="flex flex-wrap items-center font-semibold
+        text-zinc-200 text-sm
+        [&>li]:contents [&>li>a]:inline-block [&>li>a]:rounded
+        [&>li>a]:px-4 [&>li>a]:py-2
+        [&>li>a:hover]:text-white
+        [&>li>a:hover]:bg-white/5
+        [&>li>a]:transition"
+      >
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#acerca">Acerca de mí</a></li>
+        <li><a href="#intereses">Intereses</a></li>
+        <li><a href="#destacado">Destacado</a></li>
+        <li><a href="#contacto">Contáctame</a></li>
+      </ul>
+    </nav>
   </div>
-  <!-- <nav>
-    <ul>
-      Home
-    </ul>
-  </nav> -->
 </header>
