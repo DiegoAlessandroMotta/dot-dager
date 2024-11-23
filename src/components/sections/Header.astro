@@ -1,32 +1,39 @@
+---
+import Bars3Icon from '../icons/Bars3Icon.astro';
+import XMarkIcon from '../icons/XMarkIcon.astro';
+---
+
 <header class="w-dvw flex justify-center items-center gap-8 fixed top-0 z-30">
-  <div class="max-w-7xl px-4 py-3 mx-auto flex">
+  <div class="max-w-7xl px-4 py-3 ml-auto md:mx-auto flex">
     <nav
-      class="px-2 w-fit
-        border border-white/10
-        hover:border-white/20
-        rounded-full
-        backdrop-blur-sm
-        hover:backdrop-blur
-        hover:bg-white/5
-        transition shadow-md"
+      class="w-fit
+          border border-white/10
+          hover:border-white/20
+          rounded
+          md:rounded-full
+          backdrop-blur-sm
+          hover:backdrop-blur
+          hover:bg-white/5
+          transition shadow-md z-10"
     >
       <ul
-        class="hidden md:flex flex-wrap
-        items-center font-semibold
-        text-zinc-300 text-sm
-        [&>li>a]:decoration-transparent
-        [&>li>a]:after:w-full
-        [&>li>a]:after:h-[2px]
-        [&>li>a]:after:block
-        [&>li>a]:after:rounded-full
-        [&>li>a]:after:bg-transparent
-        [&>li>a]:after:transition
-        [&>li>a]:after:duration-300
-        [&>li>a:hover]:after:bg-white
-        [&>li>a:hover]:text-white
-        [&>li]:contents [&>li>a]:inline-block [&>li>a]:rounded
-        [&>li>a]:px-4 [&>li>a]:py-2
-        [&>li>a]:transition"
+        class="hidden md:flex flex-nowrap
+            px-2
+            items-center font-semibold
+            text-zinc-300 text-sm
+            [&>li>a]:decoration-transparent
+            [&>li>a]:after:w-full
+            [&>li>a]:after:h-[2px]
+            [&>li>a]:after:block
+            [&>li>a]:after:rounded-full
+            [&>li>a]:after:bg-transparent
+            [&>li>a]:after:transition
+            [&>li>a]:after:duration-300
+            [&>li>a:hover]:after:bg-white
+            [&>li>a:hover]:text-white
+            [&>li]:contents [&>li>a]:inline-block [&>li>a]:rounded
+            [&>li>a]:px-4 [&>li>a]:py-2
+            [&>li>a]:transition"
       >
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#sobre-mi">Sobre mí</a></li>
@@ -34,6 +41,98 @@
         <li><a href="#destacado">Destacado</a></li>
         <li><a href="#contacto">Contáctame</a></li>
       </ul>
+      <div class="toggle-menu flex md:hidden gap-1 p-1 justify-end">
+        <Bars3Icon class="w-6 h-6 text-white bars-icon" />
+        <XMarkIcon class="w-6 h-6 text-white x-mark-icon hidden" />
+      </div>
     </nav>
+
+    <div
+      class="flex flex-col justify-center
+        mobile-menu h-0
+        md:hidden overflow-y-hidden transition-all duration-300
+        w-full absolute top-0 left-0 bg-black/50 backdrop-blur"
+    >
+      <ul
+        class="flex flex-col w-fit mx-auto
+          px-2
+          items-center font-semibold
+          text-zinc-300 text-sm
+          [&>li>a]:after:w-full
+          [&>li>a]:after:h-[2px]
+          [&>li>a]:after:block
+          [&>li>a]:after:rounded-full
+          [&>li>a]:after:bg-transparent
+          [&>li>a]:after:transition
+          [&>li>a]:after:duration-300
+          [&>li>a:hover]:after:bg-white
+          [&>li>a:hover]:text-white
+          [&>li]:contents [&>li>a]:inline-block [&>li>a]:rounded
+          [&>li>a]:px-4 [&>li>a]:py-2
+          [&>li>a]:transition"
+      >
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#intereses">Intereses</a></li>
+        <li><a href="#destacado">Destacado</a></li>
+        <li><a href="#contacto">Contáctame</a></li>
+      </ul>
+    </div>
   </div>
 </header>
+
+<script>
+  (() => {
+    const $toggleMenu = document.querySelector('.toggle-menu');
+    const $barsIcon = document.querySelector('.bars-icon');
+    const $xMarkIcon = document.querySelector('.x-mark-icon');
+    const $mobileMenu = document.querySelector('.mobile-menu');
+    const $menuLinks = document.querySelectorAll('.mobile-menu a');
+
+    if (
+      !($toggleMenu instanceof HTMLElement) ||
+      !($barsIcon instanceof SVGElement) ||
+      !($xMarkIcon instanceof SVGElement) ||
+      !($mobileMenu instanceof HTMLElement) ||
+      !($menuLinks instanceof NodeList)
+    ) {
+      return;
+    }
+
+    let showMenu = false;
+
+    const toggleMenu = (e: MouseEvent) => {
+      e.preventDefault();
+
+      $barsIcon.classList.toggle('hidden');
+      $xMarkIcon.classList.toggle('hidden');
+      $mobileMenu.classList.toggle('h-0');
+      $mobileMenu.classList.toggle('h-52');
+
+      showMenu = !showMenu;
+    };
+
+    const closeMenu = () => {
+      $barsIcon.classList.remove('hidden');
+      $xMarkIcon.classList.add('hidden');
+      $mobileMenu.classList.remove('h-52');
+      $mobileMenu.classList.add('h-0');
+      showMenu = false;
+    };
+
+    $menuLinks.forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', (e) => {
+      const isClickInsideMenu = $mobileMenu.contains(e.target as Node);
+      const isClickInsideToggle = $toggleMenu.contains(e.target as Node);
+
+      if (!isClickInsideMenu && !isClickInsideToggle && showMenu) {
+        closeMenu();
+      }
+    });
+
+    $toggleMenu.addEventListener('click', toggleMenu);
+  })();
+</script>

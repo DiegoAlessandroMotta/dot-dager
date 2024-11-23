@@ -1,33 +1,115 @@
+---
+import CucumberIcon from '../icons/CucumberIcon.astro';
+---
+
 <section id="intereses">
   <article class="max-w-7xl px-4 pt-24 mt-24 mx-auto">
-    <h2 class="text-2xl font-semibold mb-4 text-white">Intereses</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+    <h2 class="text-3xl font-semibold mb-6 text-white">Intereses</h2>
+    <div
+      class="grid grid-cols-1
+        md:grid-cols-2 gap-8
+        [&>article]:border
+        [&>article]:rounded-xl
+        [&>article]:flex [&>article]:flex-col [&>article]:gap-6
+        [&>article]:border-secondary-400/10
+        [&>article]:h-fit
+        [&>article]:p-6 [&>article]:bg-white/5
+        [&>article>h3]:text-xl
+        [&>article>h3]:font-semibold
+        [&>article>h3]:transition
+        [&>article:hover>h3]:text-secondary-200
+        [&>article>h3]:text-white/90
+        [&>article>figure]:rounded-2xl
+        [&>article>figure]:overflow-hidden
+        [&>article>figure]:border [&>article>figure]:border-secondary-300/10
+        [&>article>figure>img]:object-cover
+        [&>article>figure>img]:transition-all
+        [&>article>figure>img]:duration-1000
+        [&>article:hover>figure>img]:scale-110"
+    >
       <article>
-        <h3>Guitarra</h3>
+        <h3>Música y obsesión compulsiva por las guitarras 🎸</h3>
         <p>
-          Me encanta tocar y también la guitarra, un refugio creativo que me
-          ayuda a desconectar y expresarme.
+          Me encanta tocarme y también tocar la guitarra, un refugio creativo
+          que me ayuda a desconectar y expresarme.
         </p>
-        <img src="/img/cat.webp" alt="" />
+        <figure>
+          <img src="/img/cat.webp" alt="" />
+        </figure>
       </article>
       <article>
-        <h3>Gatos</h3>
+        <h3>Gatos 🐱</h3>
         <p>Si alguna vez me encuentras rodeado de gatos, ¡será un buen día!</p>
-        <img src="/img/cat.webp" alt="" />
+        <figure>
+          <img src="/img/cat.webp" alt="" />
+        </figure>
       </article>
       <article>
-        <h3>Filosofía</h3>
+        <h3>Filosofía 🤔</h3>
         <p>
           El pensamiento profundo y la reflexión son esenciales para mi proceso
           creativo.
         </p>
-        <img src="/img/cat.webp" alt="" />
+        <figure id="filosofia-figure">
+          <img src="/img/christmas1.webp" alt="" />
+          <img src="/img/christmas2.webp" alt="" />
+          <img src="/img/christmas3.webp" alt="" />
+        </figure>
       </article>
       <article>
-        <h3>Pepinos</h3>
-        <p>Siempre encuentro un buen pepinillo como el snack perfecto.</p>
-        <img src="/img/cat.webp" alt="" />
+        <h3>Pepinos 🥒</h3>
+        <p>
+          Decir que me gustan los pepinos es quedarse corto, algunos dirán que
+          tengo un obsesión enfermiza con estos, pero es que simplemente no
+          puedo alejarme de ellos la mayor parte del tiempo no puedo dejar de
+          pensar en otra cosa que no sea agarrarlos con mis dos manos y
+          frotarlos sobre mi cara hasta llegar a... *respira* creo que es
+          suficiente... simplemente me gustan los pepinos.
+        </p>
+        <figure>
+          <img src="/img/cat.webp" alt="" />
+        </figure>
       </article>
     </div>
   </article>
 </section>
+
+<style>
+  #filosofia-figure {
+    position: relative;
+    width: 100%;
+    height: 300px;
+  }
+
+  #filosofia-figure img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    opacity: 0;
+  }
+
+  #filosofia-figure img.active {
+    opacity: 1; 
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const images = document.querySelectorAll('#filosofia-figure img');
+    let currentIndex = 0;
+
+    function changeImage() {
+      images[currentIndex].classList.remove('active');
+
+      currentIndex = (currentIndex + 1) % images.length;
+
+      images[currentIndex].classList.add('active');
+    }
+
+    setInterval(changeImage, 3000);
+
+    changeImage();
+  });
+</script>
