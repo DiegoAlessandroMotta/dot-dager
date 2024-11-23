@@ -6,9 +6,9 @@ import DiscordIcon from '../icons/DiscordIcon.astro';
 import TwitchIcon from '../icons/TwitchIcon.astro';
 import SpotifyIcon from '../icons/SpotifyIcon.astro';
 import XTwitterIcon from '../icons/XTwitterIcon.astro';
-// import PlayIcon from '../icons/PlayIcon.astro';
 import IconContainer2 from '../ui/IconContainer2.astro';
 import GithubIcon from '../icons/GithubIcon.astro';
+import PlayIcon from '../icons/PlayIcon.astro';
 ---
 
 <section id="destacado">
@@ -152,7 +152,7 @@ import GithubIcon from '../icons/GithubIcon.astro';
         <li>
           <IconContainer2 href="https://youtube.com/c/DagerXIV">
             <YoutubeIcon class="w-8 h-8" />
-            <span>El Antro de Dager</span>
+            <span>Canal secundario</span>
           </IconContainer2>
         </li>
       </ul>
@@ -160,11 +160,19 @@ import GithubIcon from '../icons/GithubIcon.astro';
 
     <article id="juego">
       <h2>Querés jugar algo?</h2>
-      <div class="flex justify-center">
-        <button
-          class="p-2 w-fit rounded-md hover:shadow text-white/60 hover:text-white transition
-        flex flex-col items-center text-xs gap-2"
-        >
+      <div class="flex flex-col items-center">
+        <a href="#juego">
+          <button
+            id="game-button"
+            class="p-2 w-fit rounded-md hover:shadow
+            text-white/60 hover:text-white transition
+            flex flex-col items-center text-xs gap-2"
+          >
+            <PlayIcon class="w-8 h-8" />
+            <span id="game-button-text">Jugar</span>
+          </button>
+        </a>
+        <div id="iframe-container" class="hidden">
           <iframe
             title="Lumber Jack Game"
             src="https://tbot.xyz/lumber/"
@@ -173,10 +181,36 @@ import GithubIcon from '../icons/GithubIcon.astro';
               sm:w-[400px]
               sm:h-[600px]
               md:w-[600px]
-              md:h-[900px]"
+              md:h-[800px]
+              rounded-xl"
           ></iframe>
-        </button>
+        </div>
       </div>
     </article>
   </article>
 </section>
+
+<script>
+  (() => {
+    const $gameButton = document.querySelector('#game-button');
+    const $gameButtonText = document.querySelector('#game-button-text');
+    const $iframeContainer = document.querySelector('#iframe-container');
+
+    if (
+      !($gameButton instanceof HTMLElement) ||
+      !($gameButtonText instanceof HTMLElement) ||
+      !($iframeContainer instanceof HTMLElement)
+    ) {
+      return;
+    }
+
+    let showGame = false;
+
+    $gameButton.addEventListener('click', () => {
+      $iframeContainer.classList.toggle('hidden');
+      $gameButtonText.innerText = showGame ? 'Jugar' : 'Ocultar juego';
+
+      showGame = !showGame;
+    });
+  })();
+</script>
