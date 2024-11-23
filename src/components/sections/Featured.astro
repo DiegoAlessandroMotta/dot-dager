@@ -1,16 +1,177 @@
+---
+import InstagramIcon from '../icons/InstagramIcon.astro';
+import TikTokIcon from '../icons/TikTokIcon.astro';
+import YoutubeIcon from '../icons/YoutubeIcon.astro';
+import DiscordIcon from '../icons/DiscordIcon.astro';
+import TwitchIcon from '../icons/TwitchIcon.astro';
+import SpotifyIcon from '../icons/SpotifyIcon.astro';
+import XTwitterIcon from '../icons/XTwitterIcon.astro';
+import PlayIcon from '../icons/PlayIcon.astro';
+import IconContainer2 from '../ui/IconContainer2.astro';
+import GithubIcon from '../icons/GithubIcon.astro';
+---
+
 <section id="destacado">
-  <article class="max-w-7xl px-4 pt-24 mt-24 mx-auto">
+  <article
+    class="max-w-7xl px-4 pt-24 mt-24 mx-auto
+      flex flex-col gap-8
+      [&>article>h2]:text-xl [&>article>h2]:font-semibold
+      [&>article>h2]:text-white/90
+      [&>article>h2]:mb-4
+      [&>article:hover>h2]:text-secondary-200"
+  >
     <h2 class="text-3xl font-semibold mb-6 text-white">Destacado</h2>
 
-    <ul>
-      <li>
-        <h2>Redes Sociales:</h2>
-        <p></p>
-      </li>
-      <li>
-        <h2>Proyectos o Videos:</h2>
-        <p></p>
-      </li>
-    </ul>
+    <article class="[&>h2]:hover:text-secondary-200">
+      <h2>Últimos videos subidos:</h2>
+      <div
+        class="flex flex-wrap justify-evenly
+        [&>a>figure]:rounded-xl
+        [&>a>figure]:overflow-hidden
+        [&>a>figure>img]:object-cover
+        [&>a>figure>img]:transition-all
+        [&>a>figure>img]:duration-300
+        [&>a>figure>img]:aspect-[16/9]
+        [&>a:hover>figure>img]:scale-110
+        [&>a>div>h3]:transition
+        [&>a>div>h3]:mt-4
+        [&>a>div>h3]:text-white/80
+        [&>a:hover>div>h3]:text-white"
+      >
+        <a href="https://www.youtube.com/watch?v=DaRes1TR3XQ" target="_blank">
+          <figure>
+            <img
+              alt="TE PAGO si hacés ESTA web (no es chiste)."
+              height="200"
+              src="https://i1.ytimg.com/vi/DaRes1TR3XQ/hqdefault.jpg"
+              width="400"
+            />
+          </figure>
+          <div>
+            <h3 class="font-bold text-lg mb-2">
+              TE PAGO si hacés ESTA web (no es chiste).
+            </h3>
+          </div>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=YQfRVo5UwOM" target="_blank">
+          <figure>
+            <img
+              alt="Cómo estudiar (pero bien)."
+              height="200"
+              src="https://i2.ytimg.com/vi/YQfRVo5UwOM/hqdefault.jpg"
+              width="400"
+            />
+          </figure>
+          <div>
+            <h3 class="font-bold text-lg mb-2">Cómo estudiar (pero bien).</h3>
+          </div>
+        </a>
+
+        <a href="https://www.youtube.com/watch?v=FMfLfYus6Yc" target="_blank">
+          <figure>
+            <img
+              alt="No seas tan programador."
+              height="200"
+              src="https://i3.ytimg.com/vi/FMfLfYus6Yc/hqdefault.jpg"
+              width="400"
+            />
+          </figure>
+          <div>
+            <h3 class="font-bold text-lg mb-2">No seas tan programador.</h3>
+          </div>
+        </a>
+      </div>
+    </article>
+
+    <article>
+      <h2>Redes sociales:</h2>
+      <ul class="flex flex-wrap justify-center gap-8">
+        <li>
+          <IconContainer2 href="https://youtube.com/@DotDager">
+            <YoutubeIcon class="w-8 h-8" />
+            <span>Canal principal</span>
+          </IconContainer2>
+        </li>
+        <li>
+          <IconContainer2 href="https://instagram.com/dager.32">
+            <InstagramIcon class="w-8 h-8" />
+            <span>Instagram</span>
+          </IconContainer2>
+        </li>
+        <li>
+          <IconContainer2 href="https://tiktok.com/@elantrodedager">
+            <TikTokIcon class="w-8 h-8" />
+            <span>TikTok</span>
+          </IconContainer2>
+        </li>
+        <li>
+          <IconContainer2 href="https://youtube.com/@DagerLive">
+            <YoutubeIcon class="w-8 h-8" />
+            <span>Canal de clips</span>
+          </IconContainer2>
+        </li>
+        <li>
+          <IconContainer2 href="https://discord.gg/4NFk6TamAB">
+            <DiscordIcon class="w-8 h-8" />
+            <span>Discord Server</span>
+          </IconContainer2>
+        </li>
+        <li>
+          <IconContainer2 href="https://github.com/MarianoVilla">
+            <GithubIcon class="w-8 h-8" />
+            <span>Github</span>
+          </IconContainer2>
+        </li>
+        <li>
+          <IconContainer2 href="https://youtube.com/c/DagerMusic">
+            <YoutubeIcon class="w-8 h-8" />
+            <span>Canal de música</span>
+          </IconContainer2>
+        </li>
+        <li>
+          <IconContainer2 href="https://twitch.tv/dagerxiv">
+            <TwitchIcon class="w-8 h-8" />
+            <span>Twitch</span>
+          </IconContainer2>
+        </li>
+        <li>
+          <IconContainer2
+            href="https://open.spotify.com/artist/6bkClBMJd4qKxJp0J5vHsz"
+          >
+            <SpotifyIcon class="w-8 h-8" />
+            <span>Spotify</span>
+          </IconContainer2>
+        </li>
+        <li>
+          <IconContainer2 href="https://twitter.com/Dager_32">
+            <XTwitterIcon class="w-8 h-8" />
+            <span>X (Twitter)</span>
+          </IconContainer2>
+        </li>
+        <li>
+          <IconContainer2 href="https://youtube.com/c/DagerXIV">
+            <YoutubeIcon class="w-8 h-8" />
+            <span>El Antro de Dager</span>
+          </IconContainer2>
+        </li>
+      </ul>
+    </article>
+
+    <article id="juego">
+      <h2>Querés jugar algo?</h2>
+      <div class="flex justify-center">
+        <button
+          class="p-2 w-fit rounded-md hover:shadow text-white/60 hover:text-white transition
+        flex flex-col items-center text-xs gap-2"
+        >
+          <iframe
+            title="Lumber Jack Game"
+            src="https://tbot.xyz/lumber/"
+            width="600"
+            height="900"></iframe>
+        </button>
+      </div>
+    </article>
   </article>
 </section>
