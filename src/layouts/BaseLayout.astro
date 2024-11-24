@@ -5,11 +5,25 @@ import '@fontsource/meow-script';
 
 interface Props {
   title: string;
+  description: string;
+  authorName: string;
+  url: string;
+  imageUrl: string;
+  imageAltText: string;
+  canonicalUrl: string;
+  keywords: string;
 }
 
-const { title } = Astro.props;
-
-const description = `Soy Dot Dager un creador de contenido apasionado por la programación, la filosofía, los gatos, las guitarras y una obsesión compulsiva por los pepinos.`;
+const {
+  title,
+  description,
+  authorName,
+  url,
+  imageUrl,
+  imageAltText,
+  canonicalUrl,
+  keywords,
+} = Astro.props;
 ---
 
 <html lang="es">
@@ -17,16 +31,37 @@ const description = `Soy Dot Dager un creador de contenido apasionado por la pro
     <meta charset="utf-8" />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-
-    <meta name="color-scheme" content="dark" />
-    <meta name="description" content={description} />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content={description} />
+    <meta name="author" content={authorName} />
+    <meta name="language" content="es" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Dot Dager" />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={imageAltText} />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={imageAltText} />
+
+    <!-- SEO -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="keywords" content={keywords} />
   </head>
+
   <body class="bg-zinc-950 text-zinc-400">
     <slot />
   </body>
