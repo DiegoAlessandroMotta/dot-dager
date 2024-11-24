@@ -8,6 +8,10 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+const description = `
+  Bienvenido al sitio personal de Dot Dager un creador de contenido apasionado por la programación, 
+  la filosofía, los gatos, las guitarras y una obsesión compulsiva por los pepinos.`;
 ---
 
 <html lang="es">
@@ -18,12 +22,12 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
 
     <meta name="color-scheme" content="dark" />
+    <meta name="description" content={description} />
 
-    <meta name="description" content="Wa ha ha" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Wa ha ha" />
-    <meta property="og:description" content="Wa ha ha" />
+    <meta property="og:title" content="Dot Dager" />
+    <meta property="og:description" content={description} />
   </head>
   <body class="bg-zinc-950 text-zinc-400">
     <slot />
